@@ -1,0 +1,10 @@
+{
+    "author_name": "Anonymous",
+    "author_email": "anonymous@localhost",
+    "project_name": "Example Project",
+    "project_pkg_name": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+    "project_module_name": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "project_description": "Short description here",
+    "version": "0.1.0",
+    "year": "2016"
+}
