@@ -1,2 +1,3 @@
 .tox/
 example-project/
+.virtualenv/

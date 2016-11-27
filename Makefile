@@ -1,34 +1,22 @@
 SHELL := /bin/bash
 
-.PHONY: all clean test
+.PHONY: all clean clean_all test
 
-all: clean test_all
+all: clean test
 
 clean:
-	@echo Clean
-	@if [[ -e ./tox ]]; then rm -r ./tox;  fi;
-	@if [[ -e ./example-project ]]; then rm -r ./example-project;  fi;
+	-rm -r example-project	
 
-example-project:
-	@echo Running tox to generate project from template under test	
-	tox
+clean_all: clean
+	-rm -r .tox .virtualenv
 
-test_default_envs: example-project
-	@echo Test the default tox environments in the template under test 	
-	cd ./example-project && tox
+.virtualenv/bin/activate:
+	virtualenv -p python3.5 .virtualenv
+	.virtualenv/bin/pip3 install tox
 
-test_lint: example-project
-	@echo Test the linting in the template under test 	
-	cd ./example-project && tox -e py35_lint
+example-project: .virtualenv/bin/activate
+	.virtualenv/bin/tox
 
-test_build_wheel: example-project
-	@echo Test building a wheel using the template under test 
-	cd ./example-project && tox -e py35_wheel
-
-test_build_docs: example-project
-	@echo Test building docs using the template under test 
-	cd ./example-project && tox -e py35_docs
-
-test_all: test_default_envs test_lint test_build_wheel test_build_docs
-	@echo Test all
+test: example-project .virtualenv/bin/activate
+	cd ./example-project && ../.virtualenv/bin/tox
 
