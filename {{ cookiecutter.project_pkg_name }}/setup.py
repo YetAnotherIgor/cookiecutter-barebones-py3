@@ -41,11 +41,11 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
-        'Topic :: Software Development :: Build Tools',
+        'Topic :: Software Development ',
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python :: 3.5',
     ],
-    keywords='cookiecutter',
+    keywords='',
 
     # Packages and tests
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
@@ -56,9 +56,9 @@ setup(
 
     # Setup.py dependencies
     setup_requires=[
-        'pytest-runner>=2.7', 
+        'pytest-runner>=2.7',
         'pytest>=2.8.0',
-	'pytest-cov',
+	    'pytest-cov',
     ],
 
     # Test-time dependencies
