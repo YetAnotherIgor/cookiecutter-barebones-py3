@@ -4,6 +4,14 @@ Barebones [cookiecutter template](https://github.com/audreyr/cookiecutter) for a
 
 Tailored to be the bare minimum for a personal Python 3.5 project.
 
+## Caveats
+
+* Still a work in progress
+* Not making release tags etc., `master` is the latest semi-working cut.
+* Biased towards adhoc personal projects that aren't going on PyPI any time soon.
+* If you want more than this please refer to the plethora of much more mature and
+  fully featured Python project cookiecutters out there.
+
 ## Influences
 
 Based off these project structures:
@@ -34,5 +42,3 @@ make
 ```
 
 The Makefile has several targets for slices of functionality to test.
-
-
