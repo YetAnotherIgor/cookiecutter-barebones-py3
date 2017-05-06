@@ -1,4 +1,4 @@
-# cookiecutter-barebones-py35
+# cookiecutter-barebones-py3
 
 Barebones [cookiecutter template](https://github.com/audreyr/cookiecutter) for a Python 3.x project.
 
@@ -16,8 +16,8 @@ Tailored to be the bare minimum for a personal Python 3.x project.
 
 Based off these project structures:
 
-* [PyPA Sample Project](https://github.com/pypa/sampleproject)
 * [audreyr's cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage)
+* [PyPA Sample Project](https://github.com/pypa/sampleproject)
 
 ## Prerequisites
 
@@ -25,10 +25,9 @@ Based off these project structures:
   * Python 3.4
   * Python 3.5
   * Python 3.6
-* Make
 * These Python packages
-  * ``tox`` 
   * ``virtualenv`` 
+* Make
 
 ## Usage
 
@@ -46,4 +45,3 @@ Kick it all off by running this:
 make
 ```
 
-The Makefile has several targets for slices of functionality to test.
