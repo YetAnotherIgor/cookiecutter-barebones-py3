@@ -45,7 +45,7 @@ optimize-ast=no
 # all. Valid levels: HIGH, INFERENCE, INFERENCE_FAILURE, UNDEFINED
 confidence=
 
-# Enable the message, report, category or checker with the given id(s). You can
+# Enable the message, ceport, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
 # multiple time. See also the "--disable" option for examples.
 #enable=
@@ -75,7 +75,8 @@ output-format=text
 files-output=no
 
 # Tells whether to display a full report or only the messages
-reports=yes
+#reports=yes
+reports=no
 
 # Python expression which should return a note less than 10 (10 is the highest
 # note). You have access to the variables errors warning, statement which
@@ -224,7 +225,8 @@ logging-modules=logging
 [MISCELLANEOUS]
 
 # List of note tags to take in consideration, separated by a comma.
-notes=FIXME,XXX,TODO
+#notes=FIXME,XXX,TODO
+notes=FIXME
 
 
 [SIMILARITIES]
