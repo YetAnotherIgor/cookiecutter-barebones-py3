@@ -1,8 +1,8 @@
 # cookiecutter-barebones-py35
 
-Barebones [cookiecutter template](https://github.com/audreyr/cookiecutter) for a Python 3.5 project.
+Barebones [cookiecutter template](https://github.com/audreyr/cookiecutter) for a Python 3.x project.
 
-Tailored to be the bare minimum for a personal Python 3.5 project.
+Tailored to be the bare minimum for a personal Python 3.x project.
 
 ## Caveats
 
@@ -21,9 +21,14 @@ Based off these project structures:
 
 ## Prerequisites
 
-* Python 3.5
+* One of these Python interpreters
+  * Python 3.4
+  * Python 3.5
+  * Python 3.6
 * Make
-* ``tox`` and ``virtualenv`` Python packages
+* These Python packages
+  * ``tox`` 
+  * ``virtualenv`` 
 
 ## Usage
 

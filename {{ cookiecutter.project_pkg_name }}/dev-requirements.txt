@@ -1,0 +1,13 @@
+#
+# Requirements used for development of this project
+#
+
+# Test dependencies
+mock==2.0.0
+pytest==3.0.7
+pytest-runner==2.11.1
+pytest-cov==2.4.0
+
+# Install dependencies
+-r requirements.txt
+
