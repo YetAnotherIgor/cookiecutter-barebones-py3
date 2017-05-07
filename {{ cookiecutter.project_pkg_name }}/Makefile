@@ -3,7 +3,7 @@
 #
 
 SHELL := /bin/bash
-TOXENV = $(shell python3 -c "import sys; print(\"py{}{}\".format(sys.version_info.major, sys.version_info.minor))")
+export TOXENV = $(shell python3 -c "import sys; print(\"py{}{}\".format(sys.version_info.major, sys.version_info.minor))")
 
 ## setup default target
 all: clean lint test dist
@@ -39,7 +39,8 @@ clean_test:
 
 ## lint with pylint
 lint:
-	@echo "no op"
+	tox --notest
+	.tox/$(TOXENV)/bin/pylint --rcfile pylintrc {{ cookiecutter.project_module_name }}
 
 ## run tests
 test:
