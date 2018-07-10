@@ -1,21 +1,29 @@
 SHELL := /bin/bash
 
-.PHONY: all clean clean_all test example-project
+.PHONY: all build clean clean_all test virtualenv
 
-all: clean test
+all: clean build test
 
 clean:
-	-rm -r example-project
+	-rm -r example-project/
 
 clean_all: clean
-	-rm -r .virtualenv
+	-rm -r .venv/
+	-rm -r .testvenv/
 
-.virtualenv/bin/activate:
-	virtualenv -p python3 .virtualenv
-	.virtualenv/bin/pip3 install cookiecutter tox
+.venv/bin/activate:
+	virtualenv -p python3 .venv
+	.venv/bin/pip install cookiecutter tox
 
-example-project: .virtualenv/bin/activate
-	source .virtualenv/bin/activate && cookiecutter . --no-input
+virtualenv: .venv/bin/activate
 
-test: example-project .virtualenv/bin/activate
-	source .virtualenv/bin/activate && cd ./example-project && make
+build: virtualenv
+	.venv/bin/cookiecutter . --no-input --overwrite-if-exists
+
+test:
+	cd ./example-project && make
+	-rm .testvenv/
+	virtualenv -p python3 .testvenv
+	.testvenv/bin/pip install -r ./example-project/requirements.txt
+	.testvenv/bin/pip install ./example-project/dist/example_project-0.1.0-py3-none-any.whl
+

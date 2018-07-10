@@ -1,5 +1,5 @@
 =======
-Credits
+Authors
 =======
 
 Development Lead(s)
@@ -10,6 +10,6 @@ Development Lead(s)
 Contributors
 ************
 
-None yet. Why not be the first?
+None yet.
 
 

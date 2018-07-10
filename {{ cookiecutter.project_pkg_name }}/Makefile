@@ -1,52 +1,33 @@
-#
-# Taken in large part from https://raw.githubusercontent.com/audreyr/cookiecutter-pypackage/master/%7B%7Bcookiecutter.project_slug%7D%7D/Makefile
-#
-
 SHELL := /bin/bash
 export TOXENV = $(shell python3 -c "import sys; print(\"py{}{}\".format(sys.version_info.major, sys.version_info.minor))")
 
-## setup default target
-all: clean lint test dist
+.PHONY: all build clean dist lint test
 
-## remove all build, test, coverage and Python artifacts
-clean: clean_build clean_pyc clean_test
+all: clean lint test build dist
 
-## remote all transient artifacts
-clean_all: clean clean_tox
+clean:
+	-rm -rv build/ dist/ .eggs/ *.egg-info/
+	-find . -name "*.pyc" -delete
+	-find . -name "*.pyo" -delete
+	-find . -name "__pycache__" -delete
+	-find . -name '*.egg' -delete
 
-## remove .tox etc.
-clean_tox:
-	-rm -rfv .tox
+clean_all: clean
+	-rm -rv .tox
+	-rm -f .coverage htmlcov/
 
-## remove build artifacts
-clean_build:
-	-rm -frv build/ dist/ .eggs/
-	-find . -name '*.egg-info' -exec rm -fr {} +
-	-find . -name '*.egg' -exec rm -f {} +
-
-## remove Python file artifacts
-clean_pyc:
-	find . -name '*.pyc' -exec rm -f {} +
-	find . -name '*.pyo' -exec rm -f {} +
-	find . -name '*~' -exec rm -f {} +
-	find . -name '__pycache__' -exec rm -fr {} +
-
-## remove test and coverage artifacts
-clean_test:
-	rm -fr .tox/
-	rm -f .coverage
-	rm -fr htmlcov/
-
-## lint with pylint
-lint:
+.tox/$(TOXENV)/bin/pylint:
 	tox --notest
-	.tox/$(TOXENV)/bin/pylint --rcfile pylintrc {{ cookiecutter.project_module_name }}
 
-## run tests
+lint: .tox/$(TOXENV)/bin/pylint
+	.tox/$(TOXENV)/bin/pylint example_project
+
 test:
 	tox -- test
 
-## build source and wheel distribution packages
+build:
+	tox -- build
+
 dist: clean
 	tox -- sdist
 	tox -- bdist_wheel
