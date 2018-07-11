@@ -20,7 +20,7 @@ clean_all: clean
 	tox --notest
 
 lint: .tox/$(TOXENV)/bin/pylint
-	.tox/$(TOXENV)/bin/pylint example_project
+	.tox/$(TOXENV)/bin/pylint {{ cookiecutter.project_module_name }}
 
 test:
 	tox -- test
