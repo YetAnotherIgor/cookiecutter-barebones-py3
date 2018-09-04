@@ -1,9 +1,9 @@
 SHELL := /bin/bash
 export TOXENV = $(shell python3 -c "import sys; print(\"py{}{}\".format(sys.version_info.major, sys.version_info.minor))")
 
-.PHONY: all build clean dist lint test
+.PHONY: all build clean dist lint lint_tests test
 
-all: clean lint test build dist
+all: clean lint lint_tests test build dist
 
 clean:
 	-rm -rv build/ dist/ .eggs/ *.egg-info/
@@ -20,7 +20,10 @@ clean_all: clean
 	tox --notest
 
 lint: .tox/$(TOXENV)/bin/pylint
-	.tox/$(TOXENV)/bin/pylint example_project
+	.tox/$(TOXENV)/bin/pylint {{ cookiecutter.project_module_name }}
+
+lint_tests: .tox/$(TOXENV)/bin/pylint
+	.tox/$(TOXENV)/bin/pylint --errors-only tests
 
 test:
 	tox -- test
