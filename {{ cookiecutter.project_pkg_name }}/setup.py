@@ -43,9 +43,10 @@ setuptools.setup(
         "pytest-runner >= 4.2",
     ],
     tests_require=[
-        "mock >= 2.0.0",
-        "pytest >= 3.6.3",
-        "pytest-cov >= 2.5.1",
+        'mock >= 2.0.0',
+        'pytest >= 3.6.3',
+        'pytest-cov >= 2.5.1',
+	'testfixtures >= 6.2.0',
     ],
     test_suite = 'tests',
     url='',
