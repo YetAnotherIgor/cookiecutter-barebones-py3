@@ -8,9 +8,10 @@ __pycache__/
 *.so
 *~
 
-# due to using tox and pytest
+# tox and pytest
 .tox
 .cache
+.pytest_cache/
 
 # test coverage
 .coverage
