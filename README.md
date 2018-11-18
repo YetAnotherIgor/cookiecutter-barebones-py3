@@ -6,11 +6,10 @@ Tailored to be the bare minimum for a personal Python 3.x project.
 
 ## Caveats
 
-* Still a work in progress
-* Not making release tags etc., `master` is the latest semi-working cut.
-* Biased towards adhoc personal projects that aren't going on PyPI any time soon.
+* Intended for adhoc personal projects that aren't going on PyPI any time soon.
 * If you want more than this please refer to the plethora of much more mature and
   fully featured Python project cookiecutters out there.
+
 
 ## Influences
 
@@ -31,9 +30,16 @@ Based off these project structures:
 
 ## Usage
 
-### Testing the template being generated
+Point the ``cookiecutter`` tool at the git URL for this repository and let it default
+to using the ``master`` branch.
 
-Run the included Makefile and tox to do the following:
+## Development
+
+### Testing
+
+A crude smoke testing recipe is included in the repository.
+ 
+Run it using the included Makefile, and it will do the following:
 
 * Makefile runs tox with the "outer" config (<repo-root>/tox.ini)
 * Inside the "outer" tox config, ``cookiecutter`` is run to emit an instance of the templated project.
@@ -44,4 +50,15 @@ Kick it all off by running this:
 ```
 make
 ```
+### Release management 
 
+* Branching is as follows:
+    * The ``master`` branch is the latest "production" cut
+    * The ``develop`` branch is the latest in-progress draft
+* Tags are made for each "release" of the template
+    * The ``cookiecutter`` tool itself has no concept of versions of a template other than
+      the URL it is given.  When given a URL/path to a valid Git repo, it defaults to 
+      using the ``master`` branch (although you can override this at the cli etc.).
+    * So these tags are more of a breadcrumb trail for the maintainer than something the
+      ``cookiecutter`` tool would use directly.
+    * A date-based versioning scheme is used for the tag names.
