@@ -13,8 +13,9 @@ clean:
 	-find . -name '*.egg' -delete
 
 clean_all: clean
-	-rm -rv .tox
-	-rm -f .coverage htmlcov/
+	-rm -r .tox/ .pytest/
+	-rm -f .coverage
+	-rm pytest.log
 
 .tox/$(TOXENV)/bin/pylint:
 	tox --notest

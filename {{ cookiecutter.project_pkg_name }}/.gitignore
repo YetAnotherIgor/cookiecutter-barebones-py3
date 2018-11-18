@@ -1,4 +1,4 @@
-# general things to ignore
+# General things to ignore
 build/
 dist/
 *.egg-info/
@@ -8,13 +8,9 @@ __pycache__/
 *.so
 *~
 
-# tox and pytest
-pytest.log
-.tox
+# Debris from building/testing/static analysis
 .cache
-.pytest_cache/
-.pytest_tmp/
-
-# test coverage
 .coverage
-htmlcov/
+.tox
+.pytest/
+pytest.log
