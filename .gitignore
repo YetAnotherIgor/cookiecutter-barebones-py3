@@ -1,4 +1,4 @@
 example-project/
 .tox/
 .venv/
-.testvenv/
+.test_venv/
