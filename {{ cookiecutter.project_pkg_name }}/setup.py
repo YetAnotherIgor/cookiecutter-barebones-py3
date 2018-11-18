@@ -13,6 +13,7 @@ def read_long_description():
         text = input_file.read()
     return text
 
+
 setuptools.setup(
     author='{{ cookiecutter.author_name }}',
     author_email='{{ cookiecutter.author_email }}',
@@ -29,7 +30,7 @@ setuptools.setup(
     extras_require={},
     include_package_data=True,
     install_requires=[
-        "boltons >= 17.1.0, < 18.0.0",
+        "boltons >= 18.0.1, < 19.0.0",
     ],
     keywords='',
     license='BSD',
@@ -44,9 +45,9 @@ setuptools.setup(
     ],
     tests_require=[
         'mock >= 2.0.0',
-        'pytest >= 3.6.3',
-        'pytest-cov >= 2.5.1',
-	'testfixtures >= 6.2.0',
+        'pytest >= 4.0.0',
+        'pytest-cov >= 2.6.0',
+        'testfixtures >= 6.3.0',
     ],
     test_suite = 'tests',
     url='',

@@ -1,1 +1,1 @@
-boltons==17.1.0
+boltons == 18.0.1
