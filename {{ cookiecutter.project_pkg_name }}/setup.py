@@ -4,6 +4,13 @@ A setuptools based setup module.
 
 import setuptools
 import os
+import sphinx.setup_command
+
+# some common variables
+PROJECT_AUTHOR = '{{ cookiecutter.author_name }}'
+PROJECT_AUTHOR_EMAIL = '{{ cookiecutter.author_email }}'
+PROJECT_COPYRIGHT = "2018, {}".format(PROJECT_AUTHOR)
+PROJECT_VERSION = '{{ cookiecutter.version }}'
 
 
 def read_long_description():
@@ -15,8 +22,8 @@ def read_long_description():
 
 
 setuptools.setup(
-    author='{{ cookiecutter.author_name }}',
-    author_email='{{ cookiecutter.author_email }}',
+    author=PROJECT_AUTHOR,
+    author_email=PROJECT_AUTHOR_EMAIL,
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
@@ -24,6 +31,19 @@ setuptools.setup(
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python :: 3',
     ],
+    cmdclass={
+        "sphinx_build": sphinx.setup_command.BuildDoc,
+    },
+    command_options={
+        "sphinx_build": {
+            'copyright': ('setup.py', PROJECT_COPYRIGHT),
+            'nitpicky': ('setup.py', True),
+            'project': ('setup.py', '{{ cookiecutter.project_pkg_name }}'),
+            'release': ('setup.py', PROJECT_VERSION),
+            'version': ('setup.py', PROJECT_VERSION),
+            'warning_is_error': ('setup.py', True),
+        },
+    },
     data_files=[],
     description='{{ cookiecutter.project_description }}',
     entry_points={},
@@ -41,7 +61,8 @@ setuptools.setup(
     ],
     package_data={},
     setup_requires=[
-        "pytest-runner >= 4.2",
+        'Sphinx >= 1.8.2',
+        'pytest-runner >= 4.2',
     ],
     tests_require=[
         'mock >= 2.0.0',
@@ -51,8 +72,5 @@ setuptools.setup(
     ],
     test_suite = 'tests',
     url='',
-    version='{{ cookiecutter.version }}',
+    version=PROJECT_VERSION,
 )
-
-
-
