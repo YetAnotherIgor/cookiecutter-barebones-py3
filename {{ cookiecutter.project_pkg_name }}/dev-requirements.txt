@@ -4,6 +4,7 @@
 
 # install dependencies used for build, test etc. only
 mock == 2.0.0
+mypy == 0.650
 pip == 18.1
 pylint == 2.1.1
 pytest == 4.0.0
