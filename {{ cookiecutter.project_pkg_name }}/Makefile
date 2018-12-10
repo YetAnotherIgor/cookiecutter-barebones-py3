@@ -74,7 +74,15 @@ check_tests: .tox/$(TOXENV)/bin/pylint
 	@echo
 	@echo "********************************************************************************"
 
+	@echo
+	@echo "Run pylint on test code"
+	@echo
 	.tox/$(TOXENV)/bin/pylint --errors-only tests
+
+	@echo
+	@echo "Run mypy on test code"
+	@echo
+	.tox/$(TOXENV)/bin/mypy --ignore-missing-imports tests
 
 test: .pytest/.breadcrumb
 	@echo "********************************************************************************"
