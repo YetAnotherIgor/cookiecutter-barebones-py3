@@ -11,9 +11,9 @@ SHELL := /bin/bash
 
 export TOXENV = $(shell python3 -c "import sys; print(\"py{}{}\".format(sys.version_info.major, sys.version_info.minor))")
 
-.PHONY: all build clean clean_all docs dist lint lint_tests test
+.PHONY: all build check check_tests clean clean_all docs dist test
 
-all: clean lint lint_tests test build docs dist
+all: clean check check_tests test build docs dist
 
 
 clean:
@@ -42,29 +42,47 @@ clean_all: clean
 	-rm pytest.log
 
 .pytest/.breadcrumb:
+	@echo "Making sure .pytest directory exists"
 	-mkdir .pytest
 	touch .pytest/.breadcrumb
 
 .tox/$(TOXENV)/bin/pylint:
+	@echo "Making sure tox has created a working directory"
 	tox --notest
 
-lint: .tox/$(TOXENV)/bin/pylint
+check: .tox/$(TOXENV)/bin/pylint
 	@echo "********************************************************************************"
 	@echo
-	@echo "Lint source code"
+	@echo "Run static checks on source code"
 	@echo
 	@echo "********************************************************************************"
 
+	@echo
+	@echo "Run pylint on source code"
+	@echo
 	.tox/$(TOXENV)/bin/pylint {{ cookiecutter.project_module_name }}
 
-lint_tests: .tox/$(TOXENV)/bin/pylint
+	@echo
+	@echo "Run mypy on source code"
+	@echo
+	.tox/$(TOXENV)/bin/mypy {{ cookiecutter.project_module_name }}
+
+check_tests: .tox/$(TOXENV)/bin/pylint
 	@echo "********************************************************************************"
 	@echo
-	@echo "Lint test code"
+	@echo "Run static checks on test code"
 	@echo
 	@echo "********************************************************************************"
 
+	@echo
+	@echo "Run pylint on test code"
+	@echo
 	.tox/$(TOXENV)/bin/pylint --errors-only tests
+
+	@echo
+	@echo "Run mypy on test code"
+	@echo
+	.tox/$(TOXENV)/bin/mypy --ignore-missing-imports tests
 
 test: .pytest/.breadcrumb
 	@echo "********************************************************************************"

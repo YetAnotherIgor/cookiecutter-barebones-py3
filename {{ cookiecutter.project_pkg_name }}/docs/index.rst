@@ -1,6 +1,6 @@
-===================================
+###################################
 {{ cookiecutter.project_pkg_name }}
-===================================
+###################################
 
 Version |version|
 
@@ -8,6 +8,7 @@ Version |version|
    :maxdepth: 1
 
    overview
+   usage
    api_docs
    todo
 
