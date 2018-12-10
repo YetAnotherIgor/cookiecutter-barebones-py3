@@ -11,6 +11,13 @@ Usage
 
    Talk about how to use the capabilities provided by this package.
 
+Prerequisites
+=============
+
+* Python 3.4+
+* A MacOS or Unix-like operating system.
+* Installation of this package, ``{{ cookiecutter.project_pkg_name }}``, in your local runtime environment (virtualenv etc.).
+
 Command Line
 ============
 
