@@ -2,3 +2,4 @@ example-project/
 .tox/
 .venv/
 .test_venv/
+*~
